@@ -1,0 +1,41 @@
+isShowForm: false,
+strSearch: '',
+orderBy: 'name',
+orderDir: 'asc',
+taskSelected: null
+
+Store => Nơi lưu toàn bộ dữ liệu dùng chung
+
+App
+    Home
+        CompControl
+            ControlSort
+            ControlSearch -> CompControl -> App
+                ABC
+                    XYZ -> Lấy data trực tiếp từ Store
+        CompForm
+            FormAdd
+                DEF -> Lấy data trực tiếp từ Store.
+    ListProduct
+
+    ToDoListTable -> listTask: null,
+
+        ToDoListItem
+
+
+    Props Down - Event up
+
+    Muốn tương tác (Dùng chung data gì đó) giữa 2 Component XYZ , DEF
+    Dữ liệu đó sẽ lưu trong Comp App 
+        App -> CompControl -> ControlSearch -> ABC -> XYZ (Props Down)
+        App -> CompForm -> FormAđ -> DEF
+
+
+
+        Event up
+        XYZ -> ABC -> ControlSearch -> CompControl -> App -> Thay đổi data 
+            -> CompForm -> FormAdd -> DEF (Nhận được data mới do XYZ thay đổi)
+
+    => VueX => Store
+
+        XYZ -> Kích hoạt sự kiện thay đổi trong Store -> Truyền ngược vào trong DEF
